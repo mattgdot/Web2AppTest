@@ -1,7 +1,7 @@
 name: Build APK with Custom App Name
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:   # 👈 This enables manual/API triggers
     inputs:
       user_id:
         description: 'User ID'
