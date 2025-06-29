@@ -40,7 +40,7 @@ jobs:
         run: |
           sed -i "s|APP_NAME_PLACEHOLDER|${{ github.event.inputs.app_name }}|g" app/src/main/res/values/strings.xml
           sed -i "s|URL_PLACEHOLDER|${{ github.event.inputs.app_url }}|g" app/src/main/res/values/strings.xml
-          sed -i "s|com.app.web2app|${{ github.event.inputs.package_name }}|g" app/build.gradle
+          sed -i "s|com.app.web2app|${{ github.event.inputs.package_name }}|g" app/build.gradle.kts
 
       - name: Build APK
         run: ./gradlew assembleDebug
