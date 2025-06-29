@@ -33,7 +33,7 @@ jobs:
 
       - name: Replace App Name in strings.xml
         run: |
-          sed -i "s|APP_NAME_PLACEHOLDER|${{ github.event.inputs.app_name }}|g" app/src/main/res/values/strings.xml
+          sed -i "s|app_name|${{ github.event.inputs.app_name }}|g" app/src/main/res/values/strings.xml
 
       - name: Build APK
         run: ./gradlew assembleDebug
