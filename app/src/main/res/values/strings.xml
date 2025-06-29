@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Web2App</string>
-
+    <string name="app_name">APP_NAME_PLACEHOLDER</string>
+    <string name="start_url">URL_PLACEHOLDER</string>
 </resources>

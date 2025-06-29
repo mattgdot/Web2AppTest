@@ -3,11 +3,14 @@ name: Build APK with Custom App Name
 on:
   workflow_dispatch:
     inputs:
-      user_id:
-        description: 'User ID'
-        required: true
       app_name:
-        description: 'Custom App Name'
+        description: 'App Name'
+        required: true
+      app_url:
+        description: 'Website URL'
+        required: true
+      request_id:
+        description: 'Unique Request ID'
         required: true
              
 
@@ -33,13 +36,14 @@ jobs:
 
       - name: Replace App Name in strings.xml
         run: |
-          sed -i "s|Web2App|${{ github.event.inputs.app_name }}|g" app/src/main/res/values/strings.xml
+          sed -i "s|APP_NAME_PLACEHOLDER|${{ github.event.inputs.app_name }}|g" app/src/main/res/values/strings.xml
+          sed -i "s|URL_PLACEHOLDER|${{ github.event.inputs.app_url }}|g" app/src/main/res/values/strings.xml
 
       - name: Build APK
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleRelease
 
-      - name: Upload APK
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: apk-${{ github.event.inputs.user_id }}
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: ${{ github.event.inputs.request_id }}-apk
+          path: app/build/outputs/apk/release/app-release.apk
