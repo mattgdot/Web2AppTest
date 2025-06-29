@@ -12,7 +12,9 @@ on:
       request_id:
         description: 'Unique Request ID'
         required: true
-             
+      package_name:
+        description: 'Package Name'
+        required: true             
 
 jobs:
   build:
@@ -38,6 +40,7 @@ jobs:
         run: |
           sed -i "s|APP_NAME_PLACEHOLDER|${{ github.event.inputs.app_name }}|g" app/src/main/res/values/strings.xml
           sed -i "s|URL_PLACEHOLDER|${{ github.event.inputs.app_url }}|g" app/src/main/res/values/strings.xml
+          sed -i "s|com.app.web2app|${{ github.event.inputs.package_name }}|g" app/build.gradle
 
       - name: Build APK
         run: ./gradlew assembleDebug
