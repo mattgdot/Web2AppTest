@@ -4,12 +4,7 @@ import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
-import android.webkit.WebViewClient
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.LinearProgressIndicator
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -17,11 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.viewinterop.AndroidView
-import com.kevinnzou.web.LoadingState
-import com.kevinnzou.web.WebView
-import com.kevinnzou.web.rememberWebViewState
 
 @Composable
 fun WebViewSection(){
@@ -40,10 +31,10 @@ fun WebViewSection(){
                 settings.useWideViewPort = true
                 settings.supportZoom()
                 settings.loadWithOverviewMode = true
-                webViewClient = WebViewClient()
+                settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+                settings.javaScriptCanOpenWindowsAutomatically = true
                 webChromeClient = WebChromeClient()
                 settings.setSupportZoom(true);
-                settings.setSupportMultipleWindows(true);
                 layoutParams = ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT
