@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
                     Box(
                         modifier = Modifier
                             .padding(innerPadding)
-                            .windowInsetsPadding(WindowInsets.safeContent)
+                          //  .windowInsetsPadding(WindowInsets.safeContent)
                             .fillMaxSize()
                     ) {
                         WebViewSection()
