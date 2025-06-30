@@ -50,7 +50,12 @@ jobs:
           convert user_icon.png -resize 72x72     $ICON_DIR/mipmap-hdpi/ic_launcher_foreground.png
           convert user_icon.png -resize 96x96     $ICON_DIR/mipmap-xhdpi/ic_launcher_foreground.png
           convert user_icon.png -resize 144x144   $ICON_DIR/mipmap-xxhdpi/ic_launcher_foreground.png
-          convert user_icon.png -resize 192x192   $ICON_DIR/mipmap-xxxhdpi/ic_launcher_foreground.png                  
+          convert user_icon.png -resize 192x192   $ICON_DIR/mipmap-xxxhdpi/ic_launcher_foreground.png              
+          convert user_icon.png -resize 48x48     $ICON_DIR/mipmap-mdpi/ic_launcher_background.png
+          convert user_icon.png -resize 72x72     $ICON_DIR/mipmap-hdpi/ic_launcher_background.png
+          convert user_icon.png -resize 96x96     $ICON_DIR/mipmap-xhdpi/ic_launcher_background.png
+          convert user_icon.png -resize 144x144   $ICON_DIR/mipmap-xxhdpi/ic_launcher_background.png
+          convert user_icon.png -resize 192x192   $ICON_DIR/mipmap-xxxhdpi/ic_launcher_background.png              
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
