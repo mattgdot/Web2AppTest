@@ -31,8 +31,6 @@ fun WebViewSection(){
                 settings.useWideViewPort = true
                 settings.supportZoom()
                 settings.loadWithOverviewMode = true
-                settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
-                settings.javaScriptCanOpenWindowsAutomatically = true
                 webChromeClient = WebChromeClient()
                 settings.setSupportZoom(true);
                 layoutParams = ViewGroup.LayoutParams(
