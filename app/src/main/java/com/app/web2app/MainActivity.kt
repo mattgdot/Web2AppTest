@@ -5,8 +5,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeContent
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -28,6 +30,7 @@ class MainActivity : ComponentActivity() {
                     Box(
                         modifier = Modifier
                             .padding(innerPadding)
+                            .windowInsetsPadding(WindowInsets.safeContent)
                             .fillMaxSize()
                     ) {
                         WebViewSection()

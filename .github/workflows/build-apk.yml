@@ -55,7 +55,13 @@ jobs:
           convert user_icon.png -resize 72x72     $ICON_DIR/mipmap-hdpi/ic_launcher_background.png
           convert user_icon.png -resize 96x96     $ICON_DIR/mipmap-xhdpi/ic_launcher_background.png
           convert user_icon.png -resize 144x144   $ICON_DIR/mipmap-xxhdpi/ic_launcher_background.png
-          convert user_icon.png -resize 192x192   $ICON_DIR/mipmap-xxxhdpi/ic_launcher_background.png              
+          convert user_icon.png -resize 192x192   $ICON_DIR/mipmap-xxxhdpi/ic_launcher_background.png    
+
+      - name: Replace app name, website URL and package name
+        run: |
+          sed -i "s|APP_NAME_PLACEHOLDER|${{ github.event.inputs.app_name }}|g" app/src/main/res/values/strings.xml
+          sed -i "s|URL_PLACEHOLDER|${{ github.event.inputs.app_url }}|g" app/src/main/res/values/strings.xml
+          sed -i 's|applicationId = "com.app.web2app"|applicationId = "com.app.emagapp"|' app/build.gradle.kts          
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -68,12 +74,6 @@ jobs:
 
       - name: Grant execute permission to Gradle wrapper
         run: chmod +x ./gradlew
-
-      - name: Replace App Name in strings.xml
-        run: |
-          sed -i "s|APP_NAME_PLACEHOLDER|${{ github.event.inputs.app_name }}|g" app/src/main/res/values/strings.xml
-          sed -i "s|URL_PLACEHOLDER|${{ github.event.inputs.app_url }}|g" app/src/main/res/values/strings.xml
-          sed -i 's|applicationId = "com.app.web2app"|applicationId = "com.app.emagapp"|' app/build.gradle.kts
 
       - name: Build APK
         run: ./gradlew assembleDebug
