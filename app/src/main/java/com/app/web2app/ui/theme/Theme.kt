@@ -53,17 +53,17 @@ fun Web2AppTheme(
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
-    val view = LocalView.current
-    if (!view.isInEditMode) {
-        SideEffect {
-            val window = (view.context as Activity).window
-            val insetsController = WindowCompat.getInsetsController(window, view)
-            window.statusBarColor = colorScheme.background.toArgb()
-            window.navigationBarColor = colorScheme.background.toArgb()
-            insetsController.isAppearanceLightStatusBars = !darkTheme
-            insetsController.isAppearanceLightNavigationBars = !darkTheme
-        }
-    }
+//    val view = LocalView.current
+//    if (!view.isInEditMode) {
+//        SideEffect {
+//            val window = (view.context as Activity).window
+//            val insetsController = WindowCompat.getInsetsController(window, view)
+//            window.statusBarColor = colorScheme.background.toArgb()
+//            window.navigationBarColor = colorScheme.background.toArgb()
+//            insetsController.isAppearanceLightStatusBars = !darkTheme
+//            insetsController.isAppearanceLightNavigationBars = !darkTheme
+//        }
+//    }
 
     MaterialTheme(
         colorScheme = colorScheme,

@@ -40,17 +40,7 @@ jobs:
           convert user_icon.png -resize 72x72     $ICON_DIR/mipmap-hdpi/ic_launcher.png
           convert user_icon.png -resize 96x96     $ICON_DIR/mipmap-xhdpi/ic_launcher.png
           convert user_icon.png -resize 144x144   $ICON_DIR/mipmap-xxhdpi/ic_launcher.png
-          convert user_icon.png -resize 192x192   $ICON_DIR/mipmap-xxxhdpi/ic_launcher.png        
-          convert user_icon.png -resize 48x48     $ICON_DIR/mipmap-mdpi/ic_launcher_round.png
-          convert user_icon.png -resize 72x72     $ICON_DIR/mipmap-hdpi/ic_launcher_round.png
-          convert user_icon.png -resize 96x96     $ICON_DIR/mipmap-xhdpi/ic_launcher_round.png
-          convert user_icon.png -resize 144x144   $ICON_DIR/mipmap-xxhdpi/ic_launcher_round.png
-          convert user_icon.png -resize 192x192   $ICON_DIR/mipmap-xxxhdpi/ic_launcher_round.png       
-          convert user_icon.png -resize 48x48     $ICON_DIR/mipmap-mdpi/ic_launcher_foreground.png
-          convert user_icon.png -resize 72x72     $ICON_DIR/mipmap-hdpi/ic_launcher_foreground.png
-          convert user_icon.png -resize 96x96     $ICON_DIR/mipmap-xhdpi/ic_launcher_foreground.png
-          convert user_icon.png -resize 144x144   $ICON_DIR/mipmap-xxhdpi/ic_launcher_foreground.png
-          convert user_icon.png -resize 192x192   $ICON_DIR/mipmap-xxxhdpi/ic_launcher_foreground.png              
+          convert user_icon.png -resize 192x192   $ICON_DIR/mipmap-xxxhdpi/ic_launcher.png                    
           convert user_icon.png -resize 48x48     $ICON_DIR/mipmap-mdpi/ic_launcher_background.png
           convert user_icon.png -resize 72x72     $ICON_DIR/mipmap-hdpi/ic_launcher_background.png
           convert user_icon.png -resize 96x96     $ICON_DIR/mipmap-xhdpi/ic_launcher_background.png
@@ -76,10 +66,10 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build APK
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleRelease
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ github.event.inputs.request_id }}-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: app/build/outputs/apk/release/app-release.apk
